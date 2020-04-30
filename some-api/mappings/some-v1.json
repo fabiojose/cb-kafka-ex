@@ -3,7 +3,5 @@
         "urlPath": "/some/v1"
     },
     "response": {
-        "body": "processed",
-        "transformers": ["response-template"]
     }
 }
