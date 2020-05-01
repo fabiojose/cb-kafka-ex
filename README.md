@@ -1,6 +1,13 @@
-# Spring Kafka Consumer Example
+# Spring Kafka + Circuit Breaker
 
-Exemplo de consumer com Spring Kafka
+Exemplo de consumer com Spring Kafka que persiste os registros consumidos
+em uma base de dados relacional e os envia para um endpoint REST.
+
+Através do circuit breaker, quando aberto, pausa o consumer. Reativando
+quando o circuito fechar novamente.
+
+E mesmo com o circuito aberto o consumidor que persiste os dados continuará
+seu trabalho, ou seja, eles são independentes.
 
 ## Requerimentos
 
@@ -36,17 +43,35 @@ __Windows__
 .\mvnw.cmd clean package
 ```
 
-Para executar:
+#### Executar
 
 > Você pode utilizar o [`docker-compose.yaml`](./docker-compose.yaml) para
 subir um Kafka em sua máquina
 
+__Linux__
+
 ```bash
 java \
+  -Dapp.some.http.endpoint.url='http://localhost:38080' \
   -Dspring.kafka.bootstrap-servers='localhost:9092' \
   -Dspring.kafka.consumer.client-id='spring-kafka-ex' \
   -Dspring.kafka.consumer.group-id='meu-grupo' \
   -jar target/app-spring-boot.jar
+```
+
+__Windows__
+
+#### Produza registros
+
+```bash
+kafka-producer-perf-test.sh \
+  --topic topico \
+  --num-records 10000 \
+  --record-size 100 \
+  --throughput 2 \
+  --producer-props \
+      acks=1 \
+      bootstrap.servers=localhost:9092
 ```
 
 ### Docker
