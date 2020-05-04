@@ -48,8 +48,9 @@ __Windows__
 > Você pode utilizar o [`docker-compose.yaml`](./docker-compose.yaml) para
 subir um Kafka em sua máquina
 
-Para inicar o Some API, acesse o diretório [some-api](./some-api) e
-execute o comando:
+Para simular uma API que será utilizada para receber os dados consumidos
+do Kafka existe o diretório [some-api](./some-api). Nele há uma configuração
+para executar o wiremock através do comando:
 
 ```console
 java -jar wiremock-standalone-2.26.3.jar \
@@ -67,6 +68,9 @@ java \
   -Dspring.kafka.consumer.group-id='meu-grupo' \
   -jar target/app-spring-boot.jar
 ```
+
+> Se você parar o wiremock o circuíto abrirá, pausando o consumo. E iniciando-o
+novamente, o Kafka Consumer será retomado.
 
 __Simular erro 400 no endpoint__
 ```console
