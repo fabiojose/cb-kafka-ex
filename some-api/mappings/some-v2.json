@@ -1,8 +1,8 @@
 {
     "request": {
-        "urlPath": "/some/v1"
+        "urlPath": "/some/v2"
     },
     "response": {
-        "status": 200
+        "status": 400
     }
 }

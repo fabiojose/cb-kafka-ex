@@ -11,9 +11,9 @@
   </parent>
 
   <groupId>com.github.fabiojose</groupId>
-  <artifactId>sk-consumer-ex</artifactId>
+  <artifactId>cb-kafka-ex</artifactId>
   <version>1.0</version>
-  <name>Spring Kafka Consumer Example</name>
+  <name>Circuit Breaker + Spring Kafka Consumer Example</name>
 
   <packaging>jar</packaging>
 

@@ -48,9 +48,18 @@ __Windows__
 > Você pode utilizar o [`docker-compose.yaml`](./docker-compose.yaml) para
 subir um Kafka em sua máquina
 
+Para inicar o Some API, acesse o diretório [some-api](./some-api) e
+execute o comando:
+
+```console
+java -jar wiremock-standalone-2.26.3.jar \
+  --port 38080 \
+  --verbose
+```
+
 __Linux__
 
-```bash
+```console
 java \
   -Dapp.some.http.endpoint.url='http://localhost:38080' \
   -Dspring.kafka.bootstrap-servers='localhost:9092' \
@@ -59,6 +68,16 @@ java \
   -jar target/app-spring-boot.jar
 ```
 
+__Simular erro 400 no endpoint__
+```console
+java \
+  -Dapp.some.http.endpoint.url='http://localhost:38080' \
+  -Dapp.some.uri='/some/v2' \
+  -Dspring.kafka.bootstrap-servers='localhost:9092' \
+  -Dspring.kafka.consumer.client-id='spring-kafka-ex' \
+  -Dspring.kafka.consumer.group-id='meu-grupo' \
+  -jar target/app-spring-boot.jar
+```
 __Windows__
 
 #### Produza registros
@@ -66,13 +85,16 @@ __Windows__
 ```bash
 kafka-producer-perf-test.sh \
   --topic topico \
-  --num-records 10000 \
-  --record-size 100 \
-  --throughput 2 \
+  --num-records 1000 \
+  --record-size 50 \
+  --throughput 1 \
   --producer-props \
       acks=1 \
       bootstrap.servers=localhost:9092
 ```
+
+> Serão produzidos 1000 registros, cada um com 50byte e taxa de 1 registro
+por segundo
 
 ### Docker
 

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface SomeRestEndpointClient {
 
     @PostMapping(
-        value = "/some/v1",
+        value = "${app.some.uri}",
         consumes = MediaType.APPLICATION_JSON_VALUE
     )
     void post(
