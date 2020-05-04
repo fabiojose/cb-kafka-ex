@@ -97,7 +97,7 @@ kafka-producer-perf-test.sh \
       bootstrap.servers=localhost:9092
 ```
 
-> Serão produzidos 1000 registros, cada um com 50byte e taxa de 1 registro
+> Serão produzidos 1000 registros, com 50 bytes cada e na taxa de 1 registro
 por segundo
 
 ### Docker
@@ -113,13 +113,13 @@ o fatjar através do maven.
 Para build do fatjar e montar a imagem, execute o comando:
 
 ```bash
-docker build . -t sk-consumer-ex:1.0
+docker build . -t cb-kafka-ex:1.0
 ```
 
 Para montar apenas a imagem (antes é necessário o build do maven):
 
 ```bash
-docker build -f Dockerfile-image . -t sk-consumer-ex:1.0
+docker build -f Dockerfile-image . -t cb-kafka-ex:1.0
 ```
 
 Para rodar o container:
