@@ -3,8 +3,8 @@
 Exemplo de consumer com Spring Kafka que persiste os registros consumidos
 em uma base de dados relacional e os envia para um endpoint REST.
 
-Através do circuit breaker, quando aberto, pausa o consumer. Reativando
-quando o circuito fechar novamente.
+Através do circuit breaker, quando aberto, pausa o consumer. Reativando-o
+novamente quando o circuito fechar.
 
 E mesmo com o circuito aberto o consumidor que persiste os dados continuará
 seu trabalho, ou seja, eles são independentes.
